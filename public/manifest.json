@@ -1,0 +1,62 @@
+{
+  "short_name": "scatteredNote",
+  "name": "scatteredNote",
+  "description": "a simple ui to grab content and take notes for easy query",
+  "version": "0.2",
+  "manifest_version": 3,
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*",
+    "<all_urls>",
+    "https://*.youtube.com/*"
+  ],
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "clipboardRead",
+    "clipboardWrite"
+  ],
+  "background": {
+    "service_worker": "app/background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "/media/logo.png",
+      "24": "/media/logo.png",
+      "32": "/media/logo.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "<all_urls>",
+        "https://*.youtube.com/*"
+      ],
+      "css": [
+        "/css/root.css"
+      ],
+      "js": [
+        "/static/js/content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "/static/css/content.css",
+        "/static/media/*",
+        "/media/logo.png",
+        "/media/play.png"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "<all_urls>",
+        "https://*.youtube.com/*"
+      ]
+    }
+  ]
+}
